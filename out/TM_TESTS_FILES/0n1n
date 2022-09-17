@@ -1,0 +1,15 @@
+states:q0,q1,q2,q3,q4
+acceptStates:q3
+startState:q0
+transitions:
+q0,q1,0,BLANK,RIGHT
+q0,q3,BLANK,BLANK,LEFT
+q0,q4,x,x,RIGHT
+q1,q1,0,0,RIGHT
+q1,q1,x,x,RIGHT
+q1,q2,1,x,LEFT
+q2,q2,0,0,LEFT
+q2,q2,x,x,LEFT
+q2,q0,BLANK,BLANK,RIGHT
+q4,q3,BLANK,BLANK,LEFT
+q4,q4,x,x,RIGHT
