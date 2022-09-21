@@ -24,11 +24,12 @@ public class Fibo {
         return res;
     }
 
-    static int nbr1 = 0;
-    static int nbr2 = 1;
-    static int nbr3 = 0;
+
     public static void SuiteRecursive(int n){
 
+        int nbr1 = 0;
+        int nbr2 = 1;
+        int nbr3 = 0;
 
         if(n>1){
             nbr3 = nbr1+nbr2;
@@ -61,6 +62,7 @@ public class Fibo {
         return V;
     }
 
+    // Methode multiply reprise d'Internet
     public static double[] multiply(double[][] matrix, double[] vector) {
         int rows = matrix.length;
         int columns = matrix[0].length;
