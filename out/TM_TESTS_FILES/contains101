@@ -1,10 +1,11 @@
 states:q0,q1,q2,q3
 acceptStates:q3
-startState:q0
-transitions:
+initialState:q0
+transitions:{
 q0,q0,0,0,RIGHT
 q0,q1,1,1,RIGHT
 q1,q1,1,1,RIGHT
 q1,q2,0,0,RIGHT
 q2,q0,0,0,RIGHT
 q2,q3,1,1,RIGHT
+}

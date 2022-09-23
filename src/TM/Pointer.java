@@ -5,17 +5,17 @@ public class Pointer {
     public static final int STAND = 0;
     public static final int RIGHT = 1;
     public static final char BLANK = '-';
-    private final int TAPE_LENGTH = 50; // Initial tape's length
+    private final int TAPE_LENGTH = 100; // Initial tape's length
 
     private int position;
     private StringBuffer tape;
 
     public Pointer(String word) {
-        this.position =  TAPE_LENGTH / 4 + 1; // Start at ribbon's first quarter
-        initRibbon(word);
+        this.position =  TAPE_LENGTH / 4 + 1; // Start at tape's first quarter
+        initTape(word);
     }
 
-    private void initRibbon(String word) {
+    private void initTape(String word) {
         tape = new StringBuffer(TAPE_LENGTH);
 
         tape.append('$'); // '$' represent tape's debut/end
@@ -33,25 +33,28 @@ public class Pointer {
         return tape.charAt(position);
     }
 
-    public void move(int direction) {
-        try {
-            if (direction == LEFT || direction == RIGHT) {
-                position += direction;
+    public void moveLeft() {
+        position += Pointer.LEFT;
 
-                if (read() == '$') throw new InterruptedException("Pointer out of ribbon");
+        if (read() == '$') try {
+            throw new InterruptedException("Pointer out of tape (left side)");
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-            } else throw new InterruptedException("Direction value can only be -1 (LEFT), 0 (STAND) or 1 (RIGHT)");
+    public void moveRight() {
+        position += Pointer.RIGHT;
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (read() == '$') try {
+            throw new InterruptedException("Pointer out of tape (right side)");
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     public void printTape() {
         System.out.println("TAPE:\n"+tape.toString());
-        for (int i = 0; i < position; i++) {
-            System.out.print(" ");
-        }
-        System.out.println("^"); // Pointer
+        System.out.println(" ".repeat(position) + "^");
     }
 }
