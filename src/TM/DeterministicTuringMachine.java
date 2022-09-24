@@ -85,6 +85,8 @@ public class DeterministicTuringMachine {
             if (initialState == null) {
                 throw new InterruptedException("Error while initializing TM : TM has no initial state");
             }
+
+            r.close();
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
