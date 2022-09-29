@@ -1,5 +1,5 @@
 public class FibonacciIterative {
-    static public long fibonacciIterative(long n) {
+    static public long fibo(long n) {
         if(n <= 1) {
             return n;
         }

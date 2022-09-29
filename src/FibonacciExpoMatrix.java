@@ -10,8 +10,6 @@ public class FibonacciExpoMatrix {
     }
 
 
-
-
     // Methode multiply reprise d'Internet
     public static long[] multiply(long[][] matrix, long[] vector) {
         int rows = matrix.length;
@@ -30,7 +28,7 @@ public class FibonacciExpoMatrix {
         return result;
     }
 
-    static long[][] power(long[][] M ,long n ) {
+    static long[][] power(long[][] M, long n) {
         if (n == 1) return M;
         if (n % 2 == 0) {
             return power(multiplyMatrix(M, M), n / 2);
@@ -56,7 +54,7 @@ public class FibonacciExpoMatrix {
     }
 
 
-    static public  long fib(long n) {
+    static public long fib(long n) {
         long[][] A = new long[2][2];
         A[0][0] = 1;
         A[0][1] = 1;
@@ -70,14 +68,12 @@ public class FibonacciExpoMatrix {
         if (n == 0) System.out.println(V[1]);
         else if (n == 1) System.out.println(V[0]);
 
-        var  a = power(A,n) ;
-        var result =  multiply(a,V);
+        var a = power(A, n);
+        var result = multiply(a, V);
         System.out.println(Arrays.toString(result));
 
         return result[1];
-        }
-
-
+    }
 
 
     public static void main(String[] args) throws InterruptedException {
@@ -90,10 +86,16 @@ public class FibonacciExpoMatrix {
         A[1][1] = 0;
         long[] V = new long[2];
         V[0] = 1;
-        long debut,fin;
+        long debut, fin;
         //var Apow2 = multiplyMatrix(A, A);
-        System.out.println(fib(2));
+        for (int i = 0; i < 50; i++) {
+           // System.out.printf("int", FibonacciRecursive.fib(i));
+           // System.out.println(FibonacciRecursive.fib(i));
+            System.out.println(FibonacciIterative.fibo(i));
+            System.out.println(FibonacciRecursive.fib(i));
+            System.out.println(FibonacciExpoMatrix.fib(i));
 
 
+        }
     }
 }
