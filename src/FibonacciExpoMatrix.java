@@ -3,7 +3,9 @@ import java.util.Arrays;
 public class FibonacciExpoMatrix {
     //Suite de fibonnacci : n+2 = n+1 + n
     //n0 = 1, n1 = 1, n2 = 3
-    int n;
+    static long[][] A = {{1, 1}, {1, 0}};
+    static long[] V = {1, 0};
+
 
     public FibonacciExpoMatrix() {
 
@@ -55,47 +57,15 @@ public class FibonacciExpoMatrix {
 
 
     static public long fib(long n) {
-        long[][] A = new long[2][2];
-        A[0][0] = 1;
-        A[0][1] = 1;
-        A[1][0] = 1;
-        A[1][1] = 0;
-
-        long[] V = new long[2];
-        V[0] = 1;
 
 
-        if (n == 0) System.out.println(V[1]);
-        else if (n == 1) System.out.println(V[0]);
+        if (n == 0) return V[1];
+        else if (n == 1) return V[0];
 
         var a = power(A, n);
         var result = multiply(a, V);
-        System.out.println(Arrays.toString(result));
 
         return result[1];
     }
 
-
-    public static void main(String[] args) throws InterruptedException {
-        //System.out.print("0  1");
-        //SuiteRecursive(10);
-        long[][] A = new long[2][2];
-        A[0][0] = 1;
-        A[0][1] = 1;
-        A[1][0] = 1;
-        A[1][1] = 0;
-        long[] V = new long[2];
-        V[0] = 1;
-        long debut, fin;
-        //var Apow2 = multiplyMatrix(A, A);
-        for (int i = 0; i < 50; i++) {
-           // System.out.printf("int", FibonacciRecursive.fib(i));
-           // System.out.println(FibonacciRecursive.fib(i));
-            System.out.println(FibonacciIterative.fibo(i));
-            System.out.println(FibonacciRecursive.fib(i));
-            System.out.println(FibonacciExpoMatrix.fib(i));
-
-
-        }
-    }
 }
