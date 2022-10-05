@@ -1,13 +1,15 @@
+package Exo1;
+
 public class FiboMain {
     public static void main(String[] args) throws InterruptedException {
         long debut, fin, duration;
 
-        for (long i = 0; i < 95; i += 1) {
+        for (long i = 45; i >= 0; i -= 5) {
             debut = System.nanoTime();
             FibonacciRecursive.fib(i);
             fin = System.nanoTime();
             duration = (fin - debut);
-            System.out.format("%d : %s   \n", i, duration);
+            System.out.format("%d, ", duration);
         }
        /* for (long i = 0; i < 90; i+=2) {
             debut = System.nanoTime();

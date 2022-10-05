@@ -1,3 +1,5 @@
+package Exo1;
+
 public class FibonacciRecursive {
 
         public static long fib(long n){
