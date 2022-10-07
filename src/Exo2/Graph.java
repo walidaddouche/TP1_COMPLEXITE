@@ -114,6 +114,38 @@ public class Graph {
         }
     }
 
+    // QUESTION 4
+    public List<Integer> getIncompleteMaxVoid(){
+        Graph graph = this;
+        int n = size;
+        int[] nbNeighbours = new int[n];
+
+        for(int i = 0; i< n; i++) {
+            for (int j = 0; j < n; j++) {
+                nbNeighbours[i]+=matrix[i][j];
+            }
+        }
+
+        ArrayList<Integer> sortedList = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            int minJ = 0;
+            for (int j = 0; j <+ n; j++) {
+                if((nbNeighbours[j]>=0 && nbNeighbours[j]<nbNeighbours[minJ]) || (nbNeighbours[minJ] == -1)) {
+                    minJ = j;
+                }
+            }
+            nbNeighbours[minJ] = -1;
+
+            sortedList.add(minJ);
+        }
+
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int s : sortedList){
+            if(IsConnected( result, s)) result.add(s);
+        }
+        return result;
+    }
+
 
 
 
