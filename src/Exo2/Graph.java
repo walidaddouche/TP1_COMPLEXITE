@@ -3,7 +3,11 @@ package Exo2;
 import java.util.*;
 
 public class Graph {
+
+    Random random = new Random();
     int size;
+
+    static int MAX_LIMIT = 30;
 
     public int[][] matrix; // Adjacency matrix == matrix d'adjacence
 
@@ -49,7 +53,6 @@ public class Graph {
     }
 
     public boolean IsConnected(List<Integer> list, int s) {
-        //
         // on verifie si entre une list de sommet et un sommet y'a pas de lien 
         // si il y'a un lien on retourne false sinon true
         for (int x : list) {
@@ -96,11 +99,40 @@ public class Graph {
     }
 
 
+    public void printArc(){
+        ArrayList<Integer> list;
+        for (int i = 0; i < matrix.length; i++) {
+            list = new ArrayList<>();
+            for (int j = 0; j < matrix[i].length; j++) {
+                if(matrix[i][j] == 1){
+                    list.add(j);
+
+                }
+            }
+            System.out.println(i + " -> " + list);
+
+        }
+    }
+
+
+
+
+
     public static void main(String[] args) {
         int[][] matrix = new int[9][9];
 
         Graph graph = new Graph(matrix);
+        GFGRandomGraph randomGraph = new GFGRandomGraph();
 
+        Graph g;
+        long debut, fin;
+        for (int i = 5; i < 100; i += 5) {
+            g = randomGraph.RandomGraph(i);
+            debut = System.nanoTime();
+            g.EmptyZoneMaximal();
+            fin = System.nanoTime() - debut;
+            System.out.println("i : " + i + " durée " + fin);
+        }
         graph.addArc(0, 1);
         graph.addArc(0, 5);
         graph.addArc(1, 2);
@@ -116,9 +148,12 @@ public class Graph {
 
         int[] X = new int[]{0, 2, 7, 8};
 
-        System.out.println(Arrays.toString(X) + " est une zone vide : " + graph.EmptyZone(X));
-        System.out.println("Zone vide maximale : " + graph.EmptyZoneMaximal());
-        System.out.println("Zone vide maximum complète = " + graph.MaximumEmptyZone());
+
+
+       // System.out.println(Arrays.deepToString(g1.matrix));
+        //System.out.println(Arrays.toString(X) + " est une zone vide : " + graph.EmptyZone(X));
+        //System.out.println("Zone vide maximale : " + graph.EmptyZoneMaximal());
+       // System.out.println("Zone vide maximum complète = " + graph.MaximumEmptyZone());
 
     }
 
