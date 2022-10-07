@@ -99,12 +99,12 @@ public class Graph {
     }
 
 
-    public void printArc(){
+    public void printArc() {
         ArrayList<Integer> list;
         for (int i = 0; i < matrix.length; i++) {
             list = new ArrayList<>();
             for (int j = 0; j < matrix[i].length; j++) {
-                if(matrix[i][j] == 1){
+                if (matrix[i][j] == 1) {
                     list.add(j);
 
                 }
@@ -115,22 +115,22 @@ public class Graph {
     }
 
     // QUESTION 4
-    public List<Integer> getIncompleteMaxVoid(){
+    public List<Integer> getIncompleteMaxVoid() {
         Graph graph = this;
         int n = size;
         int[] nbNeighbours = new int[n];
 
-        for(int i = 0; i< n; i++) {
+        for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                nbNeighbours[i]+=matrix[i][j];
+                nbNeighbours[i] += matrix[i][j];
             }
         }
 
         ArrayList<Integer> sortedList = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             int minJ = 0;
-            for (int j = 0; j <+ n; j++) {
-                if((nbNeighbours[j]>=0 && nbNeighbours[j]<nbNeighbours[minJ]) || (nbNeighbours[minJ] == -1)) {
+            for (int j = 0; j < +n; j++) {
+                if ((nbNeighbours[j] >= 0 && nbNeighbours[j] < nbNeighbours[minJ]) || (nbNeighbours[minJ] == -1)) {
                     minJ = j;
                 }
             }
@@ -140,14 +140,11 @@ public class Graph {
         }
 
         ArrayList<Integer> result = new ArrayList<>();
-        for (int s : sortedList){
-            if(IsConnected( result, s)) result.add(s);
+        for (int s : sortedList) {
+            if (IsConnected(result, s)) result.add(s);
         }
         return result;
     }
-
-
-
 
 
     public static void main(String[] args) {
@@ -158,13 +155,15 @@ public class Graph {
 
         Graph g;
         long debut, fin;
-        for (int i = 5; i < 100; i += 5) {
+        /*for (int i = 5; i < 100; i += 5) {
             g = randomGraph.RandomGraph(i);
             debut = System.nanoTime();
             g.EmptyZoneMaximal();
             fin = System.nanoTime() - debut;
             System.out.println("i : " + i + " durée " + fin);
         }
+
+         */
         graph.addArc(0, 1);
         graph.addArc(0, 5);
         graph.addArc(1, 2);
@@ -181,11 +180,11 @@ public class Graph {
         int[] X = new int[]{0, 2, 7, 8};
 
 
-
-       // System.out.println(Arrays.deepToString(g1.matrix));
-        //System.out.println(Arrays.toString(X) + " est une zone vide : " + graph.EmptyZone(X));
-        //System.out.println("Zone vide maximale : " + graph.EmptyZoneMaximal());
-       // System.out.println("Zone vide maximum complète = " + graph.MaximumEmptyZone());
+        System.out.println(Arrays.deepToString(graph.matrix));
+        System.out.println(Arrays.toString(X) + " est une zone vide : " + graph.EmptyZone(X));
+        System.out.println("Zone vide maximale : " + graph.EmptyZoneMaximal());
+        System.out.println("Zone vide maximum complète = " + graph.MaximumEmptyZone());
+        System.out.println("Zone vide maximum Incomplète = " + graph.getIncompleteMaxVoid());
 
     }
 
