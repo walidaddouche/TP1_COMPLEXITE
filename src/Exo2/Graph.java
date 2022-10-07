@@ -3,7 +3,6 @@ package Exo2;
 import java.util.*;
 
 public class Graph {
-    Utils utils = new Utils();
     int size;
 
     public int[][] matrix; // Adjacency matrix == matrix d'adjacence
@@ -70,7 +69,7 @@ public class Graph {
         return result;
     }
 
-   //Methodes realisé avec un camarade
+    //Methodes realisé avec un camarade
     public void getAllMaximalVoids(int level) {
         if (level >= size) {
             if (voidTemp.size() > voidMax.size()) {
@@ -102,23 +101,25 @@ public class Graph {
 
         Graph graph = new Graph(matrix);
 
-        graph.addArc(0, 1); graph.addArc(0, 5);
-        graph.addArc(1, 2); graph.addArc(1, 3); graph.addArc(1, 7);
+        graph.addArc(0, 1);
+        graph.addArc(0, 5);
+        graph.addArc(1, 2);
+        graph.addArc(1, 3);
+        graph.addArc(1, 7);
         graph.addArc(2, 4);
         graph.addArc(3, 6);
         graph.addArc(4, 6);
-        graph.addArc(5, 8);graph.addArc(5, 7);
-        graph.addArc(6, 7);graph.addArc(6, 8);
+        graph.addArc(5, 8);
+        graph.addArc(5, 7);
+        graph.addArc(6, 7);
+        graph.addArc(6, 8);
 
-        //  int[] list = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8};
+        int[] X = new int[]{0, 2, 7, 8};
 
-        //
-        // System.out.println(graph.EmptyZoneMaximal());
-        /*List<Integer> list = List.of(5);
-        System.out.println(graph.IsConnected(list, 4));
+        System.out.println(Arrays.toString(X) + " est une zone vide : " + graph.EmptyZone(X));
+        System.out.println("Zone vide maximale : " + graph.EmptyZoneMaximal());
+        System.out.println("Zone vide maximum complète = " + graph.MaximumEmptyZone());
 
-         */
-        System.out.println(graph.MaximumEmptyZone());
     }
 
 

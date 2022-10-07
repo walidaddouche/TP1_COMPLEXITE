@@ -6,7 +6,7 @@ public class FiboMain {
 
         for (long i = 45; i >= 0; i -= 5) {
             debut = System.nanoTime();
-            FibonacciRecursive.fib(i);
+            FibonacciExpoMatrix.fib(i);
             fin = System.nanoTime();
             duration = (fin - debut);
             System.out.format("%d, ", duration);
